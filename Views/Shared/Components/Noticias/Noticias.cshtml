@@ -1,0 +1,12 @@
+﻿@model List<Noticia>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@item.Link">@item.Titulo</a>
+        </li>
+    }
+</ul>
+
+<email nome="Rodolfo" mail-to="rodolfo.fadino"></email>

@@ -24,7 +24,16 @@ namespace fiap.Controllers
 
         public IActionResult Detalhe(string categoria, int idDoProduto, string tamanho)
         {
+            
             return View("Produto");
         }
+        
+        
+        [HttpPost]
+        public IActionResult Produto(HomeViewModel model)
+        {
+            return View();
+        }
+
     }
 }

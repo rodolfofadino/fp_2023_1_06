@@ -1,10 +1,28 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using fiap.Middlewares;
+using fiap.Models;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
-//builder.Services.AddControllers();
+
+var connection = "Server=(localdb)\\mssqllocaldb;Database=fiap-musicas;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+builder.Services.AddDbContext<MusicaContext>(o => o.UseSqlServer(connection));
+
 
 var app = builder.Build();
+
+
+//app.UseMiddleware<MeuMiddleware>();
+
+//app.UseMeuLogger();
+
+
+
+if (!app.Environment.IsProduction())
+    app.UseDeveloperExceptionPage();
 
 
 app.UseStaticFiles();
@@ -21,16 +39,60 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    defaults: new {Controller = "Home", Action = "Index" },
+    defaults: new { Controller = "Home", Action = "Index" },
     pattern: "{controller}/{action}/{id?}"
 );
-//app.MapControllerRoute(
-//    name: "default",
-//   // pattern: "{controller}/{action}/{id?}"
-//    pattern: "{controller=Home}/{action=Index}/{id?}"
-//);
+app.MapControllerRoute(
+    name: "default",
+    // pattern: "{controller}/{action}/{id?}"
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
+
+app.Run();
 
 
+
+
+#region 
+
+//app.Use(async (context, next) =>
+//{
+//    var teste = 123;
+//    await next();
+//    var teste2 = 123;
+//});
+
+//app.Map("/admin", a =>
+//{
+//    a.Run(async context =>
+//    {
+//        await context.Response.WriteAsync("admin");
+//    });
+//});
+
+
+//app.MapWhen(ctx => ctx.Request.Query.ContainsKey("valordaquery"),
+//    a =>
+//    {
+//        a.Run(async context => await context.Response.WriteAsync("teste da query"));
+//    }
+//    );
+
+
+//app.Use(async (context, next) =>
+//{
+//    var teste = 123;
+//    await next();
+//    var teste2 = 123;
+//});
+
+//app.Run(async context =>
+//{
+//    await context.Response.WriteAsync("Boa noite");
+
+//});
+
+#endregion
 
 
 
@@ -42,7 +104,6 @@ app.MapControllerRoute(
 //app.MapGet("/teste", () => "teste");
 
 
-app.Run();
 
 
 
