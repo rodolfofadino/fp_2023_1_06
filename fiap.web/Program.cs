@@ -1,5 +1,5 @@
-﻿using fiap.Middlewares;
-using fiap.Models;
+﻿using fiap.core.Models;
+using fiap.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

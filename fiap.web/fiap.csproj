@@ -23,4 +23,8 @@
     <PackageReference Include="Serilog.Sinks.Logentries" Version="4.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\fiap.core\fiap.core\fiap.core.csproj" />
+  </ItemGroup>
+
 </Project>

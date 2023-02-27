@@ -1,4 +1,4 @@
-﻿using fiap.Models;
+﻿using fiap.core.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fiap.ViewComponents
