@@ -1,11 +1,15 @@
 ﻿using fiap.core.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace fiap.api.Controllers
 {
+    //[ApiVersion("1.0")]
+    //[Route("api/{version:apiVersion}/[controller]")]
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowAll")]
     public class MusicasController : Controller
     {
         private MusicaContext _context;
@@ -84,7 +88,7 @@ namespace fiap.api.Controllers
         }
 
 
-        //[HttpPut]
+        [HttpPut]
         [Route("{id}")]
         public async Task<ActionResult<Musica>> Put(Musica model)
         {
