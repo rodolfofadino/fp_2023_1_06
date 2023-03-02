@@ -1,4 +1,5 @@
 ﻿using fiap.core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 namespace fiap.Controllers
 {
 
+    [Authorize]
     public class MusicasController : Controller
     {
         private MusicaContext _context;
@@ -17,6 +19,7 @@ namespace fiap.Controllers
 
         public IActionResult Index()
         {
+            var teste = User;
             var musicas = _context.Musicas.ToList();
 
             return View(musicas);
@@ -29,6 +32,7 @@ namespace fiap.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create([FromForm] Musica model)
         {
             if (ModelState.IsValid)
@@ -74,6 +78,7 @@ namespace fiap.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="admin")]
         public async Task<IActionResult> Delete(int Id)
         {
             #region exemplos tasks

@@ -1,4 +1,6 @@
-﻿using fiap.core.Models;
+﻿using fiap.api.ActionFilters;
+using fiap.core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,8 @@ namespace fiap.api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("AllowAll")]
+    //[CustomAuthorize]
+    [Authorize]
     public class MusicasController : Controller
     {
         private MusicaContext _context;
@@ -57,7 +61,6 @@ namespace fiap.api.Controllers
         [ProducesResponseType(400)]
         public async Task<ActionResult<List<Musica>>> Get()
         {
-
             return Ok(await _context.Musicas.ToListAsync());
         }
 

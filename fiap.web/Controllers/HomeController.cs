@@ -11,6 +11,9 @@ namespace fiap.Controllers
 
             ViewBag.TipoDoProduto = "Tenis";
 
+            //origem do banco
+            ViewBag.Tentativa = "<script>alert('teste');</script>";
+
             //return View("Produto");
 
             //abstraindo o acesso ao banco
@@ -33,6 +36,23 @@ namespace fiap.Controllers
         public IActionResult Produto(HomeViewModel model)
         {
             return View();
+        }
+
+
+        public IActionResult Login(string returnUrl)
+        {
+            if (!Url.IsLocalUrl(returnUrl))
+            {
+                return LocalRedirect("/");
+
+            }
+            else
+            {
+
+                return LocalRedirect(returnUrl);
+            }
+
+            //return LocalRedirect(returnUrl);
         }
 
     }

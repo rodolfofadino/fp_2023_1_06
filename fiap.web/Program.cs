@@ -1,5 +1,7 @@
 ﻿using fiap.core.Models;
 using fiap.Middlewares;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,31 @@ builder.Services.AddControllersWithViews();
 var connection = "Server=(localdb)\\mssqllocaldb;Database=fiap-musicas;Trusted_Connection=True;MultipleActiveResultSets=true";
 
 builder.Services.AddDbContext<MusicaContext>(o => o.UseSqlServer(connection));
+
+builder.Services.AddDataProtection()
+    .SetApplicationName("fiap")
+    .PersistKeysToFileSystem(new DirectoryInfo(@"C:\\"));
+
+builder.Services.AddAuthentication("fiap")
+    .AddCookie("fiap", o =>
+    {
+        o.LoginPath = "/account/login";
+        o.AccessDeniedPath = "/account/denied";
+        o.Events.OnValidatePrincipal = context =>
+        {
+            var a = context.Principal.Identity;
+            //if (context.Properties.Items.TryGetValue("OpenIdConnect.Code.RedirectUri", out string redirectUri))
+            //{
+            //    Uri cookieWasSignedForUri = new Uri(redirectUri);
+            //    if (context.Request.Host.Host != cookieWasSignedForUri.Host)
+            //    {
+            //        context.RejectPrincipal();
+            //    }
+            //}
+
+            return Task.CompletedTask;
+        };
+    });
 
 
 var app = builder.Build();
@@ -30,6 +57,9 @@ app.UseStaticFiles();
 
 //https://localhost:59148/home/index
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "padraodoproduto",
