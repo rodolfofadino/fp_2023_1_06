@@ -3,40 +3,49 @@
 
 
 
-@*<h1>@Html.Raw( ViewBag.Tentativa)</h1>*@
-<h1>@ViewBag.Tentativa</h1>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Tript</h1>
+        <p class="lead text-muted">Conheca as novidades sobre os melhores destinos e esteja sempre por dentro das novidades.</p>
+        <p>
+            <a href="#" class="btn btn-primary my-2">Buscar passagens</a>
+            <a href="#" class="btn btn-secondary my-2">Conheca nosso blog</a>
+        </p>
+    </div>
+</section>
+
+<div class="row">
+    <div id="carroseul" class="col">
+        <div class="jcarousel-wrapper">
+            <div class="jcarousel">
+                <ul>
+                    <li>
+                        <img class="carroseulimage" src="~/images/imagem-1.png" />
+                    </li>
+                    <li>
+                        <img class="carroseulimage" src="~/images/imagem-2.png" />
+                    </li>
+                    <li>
+                        <img class="carroseulimage" src="~/images/imagem-3.png" />
+                    </li>
+                    <li>
+                        <img class="carroseulimage" src="~/images/imagem-4.png" />
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
-<h1>Teste da minha View</h1>
-<h1> @ViewData["aluno"] </h1>
-<h1> @ViewData["TipoDoProduto"] </h1>
-<h1> @ViewBag.TipoDoProduto </h1>
-
-
-<h1>@Model.NomeDoAluno</h1>
-<h1>@Model.CategoriaDoProduto</h1>
-
-<img src="/giphy.webp" asp-append-version="true" />
-
-<vc:noticias total="5" noticias-urgentes="false" ></vc:noticias>
-
-<email mail-to="caio"></email>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-
-<script>
-    $.get("https://localhost:57813/api/musicas", function (data,status){
-        console.log("Data:"+ data);
-    });
-</script>
+<vc:noticias total="20" noticias-urgentes="false"></vc:noticias>
 
 
 
 
 
-
-
-  

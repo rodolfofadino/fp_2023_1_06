@@ -1,4 +1,5 @@
 ﻿using fiap.core.Models;
+using fiap.core.Services;
 using fiap.Middlewares;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Data.SqlClient;
@@ -38,6 +39,7 @@ builder.Services.AddAuthentication("fiap")
         };
     });
 
+builder.Services.AddTransient<NoticiaService>();
 
 var app = builder.Build();
 

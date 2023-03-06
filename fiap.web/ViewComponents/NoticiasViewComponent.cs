@@ -1,19 +1,22 @@
 ﻿using fiap.core.Models;
+using fiap.core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fiap.ViewComponents
 {
     public class NoticiasViewComponent : ViewComponent
     {
+        private NoticiaService _noticiaService;
+
+        public NoticiasViewComponent(NoticiaService noticiaService)
+        {
+            _noticiaService = noticiaService;
+
+        }
         public async Task<IViewComponentResult> InvokeAsync(int total, bool noticiasUrgentes)
         {
-            //simulando um repository
-            var noticias = new List<Noticia>();
-            for (int i = 0; i < total; i++)
-            {
-                noticias.Add(new Noticia() { Id = i + 1, Titulo = $"Noticia {i}", Link = "https://fiap.com.br" });
-            }
-
+            var noticias = _noticiaService.Load(total);
+            
             var viewName = "Noticias";
 
             if (noticiasUrgentes)
