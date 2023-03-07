@@ -1,0 +1,10 @@
+[
+  {
+    "outputFileName": "wwwroot/bundle.css",
+    "inputFiles": [
+      "wwwroot/site.css",
+      "wwwroot/jcarousel.basic.css",
+      "wwwroot/images/mysprite.sprite.css"
+    ]
+  }
+]
