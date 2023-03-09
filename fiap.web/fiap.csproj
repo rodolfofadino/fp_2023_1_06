@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\fiap.core\fiap.core\fiap.core.csproj" />
+    <ProjectReference Include="..\fiap.IoC\fiap.IoC.csproj" />
   </ItemGroup>
 
 </Project>

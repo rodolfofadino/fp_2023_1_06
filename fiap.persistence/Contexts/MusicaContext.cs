@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using fiap.domain.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace fiap.core.Models
+namespace fiap.persistence.Contexts
 {
     public class MusicaContext : DbContext
     {

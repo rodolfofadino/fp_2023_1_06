@@ -1,4 +1,4 @@
-﻿namespace fiap.core.Models
+﻿namespace fiap.domain.Models
 {
     public class Noticia
     {
@@ -6,5 +6,6 @@
         public string Titulo { get; set; }
         public string Link { get; set; }
         public string Imagem { get; set; }
+        public DateTime UltimaAtualizacao { get; set; }
     }
 }

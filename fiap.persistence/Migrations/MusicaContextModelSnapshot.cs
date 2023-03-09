@@ -3,20 +3,18 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using fiap.core.Models;
+using fiap.domain.Models;
+using fiap.persistence.Contexts;
 
 #nullable disable
 
-namespace fiap.core.Migrations
+namespace fiap.persistence.Migrations
 {
     [DbContext(typeof(MusicaContext))]
-    [Migration("20230214012341_FirstMigration")]
-    partial class FirstMigration
+    partial class MusicaContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +23,7 @@ namespace fiap.core.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("fiap.core.Models.Musica", b =>
+            modelBuilder.Entity("fiap.domain.Models.Musica", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

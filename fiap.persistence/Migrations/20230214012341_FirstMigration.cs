@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace fiap.core.Migrations
+namespace fiap.persistence.Migrations
 {
     /// <inheritdoc />
     public partial class FirstMigration : Migration

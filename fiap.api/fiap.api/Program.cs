@@ -1,6 +1,6 @@
 ﻿
 using fiap.api;
-using fiap.core.Models;
+using fiap.persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;

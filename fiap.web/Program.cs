@@ -1,22 +1,21 @@
-﻿using fiap.core.Models;
-using fiap.core.Services;
-using fiap.Middlewares;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+fiap.IoC.DependencyContainer.RegisterServices(builder.Services, builder.Configuration);
+
+builder.Services.AddMemoryCache();
+//builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddResponseCompression(
+    o => o.EnableForHttps = true
+);
 
 builder.Services.AddControllersWithViews();
 
-var connection = "Server=(localdb)\\mssqllocaldb;Database=fiap-musicas;Trusted_Connection=True;MultipleActiveResultSets=true";
-
-builder.Services.AddDbContext<MusicaContext>(o => o.UseSqlServer(connection));
-
 builder.Services.AddDataProtection()
-    .SetApplicationName("fiap")
-    .PersistKeysToFileSystem(new DirectoryInfo(@"C:\\"));
+                .SetApplicationName("fiap")
+                .PersistKeysToFileSystem(new DirectoryInfo(@"C:\\"));
 
 builder.Services.AddAuthentication("fiap")
     .AddCookie("fiap", o =>
@@ -39,14 +38,6 @@ builder.Services.AddAuthentication("fiap")
         };
     });
 
-builder.Services.AddTransient<NoticiaService>();
-
-builder.Services.AddMemoryCache();
-//builder.Services.AddDistributedMemoryCache();
-
-builder.Services.AddResponseCompression(
-    o => o.EnableForHttps = true
-); 
 
 var app = builder.Build();
 

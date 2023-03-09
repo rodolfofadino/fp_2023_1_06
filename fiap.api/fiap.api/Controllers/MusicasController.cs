@@ -1,5 +1,5 @@
-﻿using fiap.api.ActionFilters;
-using fiap.core.Models;
+﻿using fiap.domain.Models;
+using fiap.persistence.Contexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,5 @@
-﻿using fiap.core.Models;
+﻿
+using fiap.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fiap.Controllers

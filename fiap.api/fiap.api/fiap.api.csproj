@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\fiap.core\fiap.core\fiap.core.csproj" />
+    <ProjectReference Include="..\..\fiap.persistence\fiap.persistence.csproj" />
   </ItemGroup>
 
 </Project>

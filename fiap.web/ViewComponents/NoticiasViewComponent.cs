@@ -1,14 +1,13 @@
-﻿using fiap.core.Models;
-using fiap.core.Services;
+﻿using fiap.application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace fiap.ViewComponents
 {
     public class NoticiasViewComponent : ViewComponent
     {
-        private NoticiaService _noticiaService;
+        private INoticiaService _noticiaService;
 
-        public NoticiasViewComponent(NoticiaService noticiaService)
+        public NoticiasViewComponent(INoticiaService noticiaService)
         {
             _noticiaService = noticiaService;
 

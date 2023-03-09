@@ -1,4 +1,5 @@
-﻿using fiap.core.Models;
+﻿using fiap.domain.Models;
+using fiap.persistence.Contexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

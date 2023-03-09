@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace fiap.core.Models
+namespace fiap.domain.Models
 {
     public class Musica
     {
